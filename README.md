@@ -121,6 +121,7 @@ mysql> SHOW TABLES;
 | outcome       |
 +---------------+
 5 rows in set (0.01 sec)
+```
 * Раскомментируем в /etc/my.cnf.d/05-binlog.cnf строки:
 ```
 #replicate-ignore-table=bet.events_on_demand
