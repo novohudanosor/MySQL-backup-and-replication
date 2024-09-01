@@ -128,7 +128,7 @@ mysql> SHOW TABLES;
 #replicate-ignore-table=bet.v_same_event
 ```
 * Таким образом указываем таблицы которые будут игнорироваться при репликации. В выводе нет таблиц v_same_event и events_on_demand на слэйв сервере. Далее пробуем подключить и запустить репликацию:
-
+```
 mysql> CHANGE REPLICATION SOURCE TO SOURCE_HOST = "192.168.11.150", SOURCE_PORT = 3306, SOURCE_USER = "repl", SOURCE_PASSWORD =  "!OtusLinux2024", SOURCE_AUTO_POSITION = 1;
 mysql> START REPLICA;
 mysql> SHOW REPLICA STATUS;
