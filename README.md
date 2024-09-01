@@ -11,3 +11,4 @@ MySQL: бэкап и репликация
 market |
 | odds |
 | outcome
+Настроить GTID репликацию
