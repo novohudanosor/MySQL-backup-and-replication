@@ -29,7 +29,7 @@ root@slave:~# cp /vagrant/provisioning/files/conf.d/mysqld_slave.cnf /etc/mysql/
 ```
 systemctl restart mysql
 ```
-* ** Устанавливаем пароль root в mysql **
+* **Устанавливаем пароль root в mysql**
 ```
 mysql -e \"ALTER USER 'root'@'localhost' IDENTIFIED WITH 'caching_sha2_password' BY 'Otus2024!@#'\"
 ```
