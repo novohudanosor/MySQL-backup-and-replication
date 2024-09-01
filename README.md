@@ -175,3 +175,19 @@ mysql> SELECT * FROM bookmaker;
 +----+----------------+
 5 rows in set (0.00 sec)
 ```
+* Slave сервер
+```
+mysql> USE bet;
+Database changed
+mysql> SELECT * FROM bookmaker;
++----+----------------+
+| id | bookmaker_name |
++----+----------------+
+|  1 | 1xbet          |   
+|  4 | betway         |
+|  5 | bwin           |
+|  6 | ladbrokes      |
+|  3 | unibet         |
++----+----------------+
+5 rows in set (0.00 sec)   
+```
