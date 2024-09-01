@@ -121,6 +121,12 @@ mysql> SHOW TABLES;
 | outcome       |
 +---------------+
 5 rows in set (0.01 sec)
+* Раскомментируем в /etc/my.cnf.d/05-binlog.cnf строки:
+```
+#replicate-ignore-table=bet.events_on_demand
+#replicate-ignore-table=bet.v_same_event
+```
+* Таким образом указываем таблицы которые будут игнорироваться при репликации
 ```
 * В выводе нет таблиц v_same_event и events_on_demand на слэйв сервере. Далее пробуем подключить и запустить репликацию:
 ```
@@ -148,4 +154,24 @@ mysql> SHOW REPLICA STATUS;
     Retrieved_Gtid_Set: 2bc7b2cb-62dd-11ef-93b2-0255be2b59e4:1-38
          Executed_Gtid_Set: 18bbce3a-62dd-11ef-8fee-0255be2b59e4:1-174,2bc7b2cb-62dd-11ef-93b2-0255be2b59e4:1-38
              Auto_Position: 1
+```
+* На мастер сервере в базе 'bet' создаётся запись '1xbet' в таблице 'bookmaker'. Данные изменения происходят и на слэйв сервере:
+* Master сервер
+```
+mysql> USE bet;
+Database changed
+mysql> INSERT INTO bookmaker (id,bookmaker_name) VALUES(1,'1xbet');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM bookmaker;
++----+----------------+
+| id | bookmaker_name |
++----+----------------+
+|  1 | 1xbet          |
+|  4 | betway         |
+|  5 | bwin           |
+|  6 | ladbrokes      |
+|  3 | unibet         |
++----+----------------+
+5 rows in set (0.00 sec)
 ```
